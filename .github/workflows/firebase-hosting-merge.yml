@@ -22,7 +22,7 @@ jobs:
       - name: Parse an FVM config file into environment variables
         uses: kuhnroyal/flutter-fvm-config-action@v1
         with:
-          path: './flutter/.fvm/fvm_config.json'
+          path: './.fvm/fvm_config.json'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
