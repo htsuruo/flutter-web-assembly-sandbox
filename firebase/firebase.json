@@ -1,6 +1,17 @@
 {
-  "hosting": {
-    "public": "build/web",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
+  "hosting": [
+    {
+      "target": "wasm",
+      "public": "build/web"
+    },
+    {
+      "target": "js",
+      "public": "build/web"
+    },
+    {
+      "target": "html",
+      "public": "build/web"
+    }
+  ],
+  "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
 }

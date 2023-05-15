@@ -5,11 +5,14 @@
   "targets": {
     "flutter-web-assembly-sandbox": {
       "hosting": {
-        "flutter-web-assembly-sandbox": [
-          "wasm"
+        "js": [
+          "flutter-web-assembly-sandbox-js"
         ],
-        "flutter-web-assembly-sandbox-js": [
-          "js"
+        "wasm": [
+          "flutter-web-assembly-sandbox"
+        ],
+        "html": [
+          "flutter-web-assembly-sandbox-html"
         ]
       }
     }
