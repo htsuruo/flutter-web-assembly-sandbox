@@ -15,10 +15,30 @@ concurrency:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
     steps:
       - uses: actions/checkout@v3
-      # - name: build web
-      #   run: flutter build web
+
+      - name: Parse an FVM config file into environment variables
+        uses: kuhnroyal/flutter-fvm-config-action@v1
+        with:
+          path: './flutter/.fvm/fvm_config.json'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Build web
+        run: flutter build web
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
