@@ -15,3 +15,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_WEB_ASSEMBLY_SANDBOX }}'
           projectId: flutter-web-assembly-sandbox
+          # ここにプレビュー用のチャンネルIDを設定する
+          # channelId: [YOUR_PREVIEW_CHANNEL_ID]
