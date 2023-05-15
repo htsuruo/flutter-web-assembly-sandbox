@@ -2,15 +2,20 @@
 
 A new Flutter project.
 
-## Getting Started
+## requirement
 
-This project is a starting point for a Flutter application.
+- [fvm | Flutter Version Management](https://fvm.app/)(global)
+- Firebase project
 
-A few resources to get you started if this is your first Flutter project:
+## How to build and deploy
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+# Wasm
+melos run hosting:wasm
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# CanvasKit renderer
+melos run hosting:js
+
+# html renderer
+melos run hosting:html
+```
