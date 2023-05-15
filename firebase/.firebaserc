@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "flutter-web-assembly-sandbox"
-  }
+  },
+  "targets": {
+    "flutter-web-assembly-sandbox": {
+      "hosting": {
+        "flutter-web-assembly-sandbox": [
+          "wasm"
+        ],
+        "flutter-web-assembly-sandbox-js": [
+          "js"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
