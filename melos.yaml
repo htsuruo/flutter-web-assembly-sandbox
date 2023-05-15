@@ -1,0 +1,25 @@
+name: flutter_web_assembly_sandbox
+
+packages:
+  - ./
+
+sdkPath: '.fvm/flutter_sdk'
+
+scripts:
+  hosting:wasm:
+    run: |
+      flutter build web --wasm
+      cd ./firebase
+      firebase deploy --only hosting:wasm
+
+  hosting:js:
+    run: |
+      flutter build web --web-renderer canvaskit
+      cd ./firebase
+      firebase deploy --only hosting:js
+
+  hosting:html:
+    run: |
+      flutter build web --web-renderer html
+      cd ./firebase
+      firebase deploy --only hosting:html
