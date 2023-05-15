@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "wasm",
-      "public": "build/web"
+      "public": "build/web_wasm"
     },
     {
       "target": "js",
