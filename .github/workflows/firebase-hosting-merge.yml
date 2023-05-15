@@ -7,15 +7,11 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 
-# ref. https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # ref. https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
