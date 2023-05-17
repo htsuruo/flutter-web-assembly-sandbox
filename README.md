@@ -1,12 +1,12 @@
 # flutter_web_assembly_sandbox
 
-A new Flutter project.
+This repository is a demo hosted with various build options, focusing on Flutter Web's Wasm support. You can check the differences in behavior and more by visiting the URLs listed in the following table.
 
-| Compiled | Renderer | Hosting URL |
-| --- | --- | --- |
-| Wasm | CanvasKit | https://flutter-web-assembly-sandbox.firebaseapp.com/#/ |
-| JavaScript | CanvasKit | https://flutter-web-assembly-sandbox-js.firebaseapp.com/#/ |
-| JavaScript | HTML DOM | https://flutter-web-assembly-sandbox-html.firebaseapp.com/#/ |
+| BuildOptions | Hosting URL |
+| --- | --- |
+| `--wasm` | https://flutter-web-assembly-sandbox.firebaseapp.com/#/ |
+| `--web-renderer canvaskit` | https://flutter-web-assembly-sandbox-js.firebaseapp.com/#/ |
+| `--web-renderer html` | https://flutter-web-assembly-sandbox-html.firebaseapp.com/#/ |
 
 ## requirement
 
