@@ -4,7 +4,7 @@ A new Flutter project.
 
 | Compiled | Renderer | Hosting URL |
 | --- | --- | --- |
-| Wasm | CanvasKit | https://flutter-web-assembly-sandbox-js.firebaseapp.com/#/ |
+| Wasm | CanvasKit | https://flutter-web-assembly-sandbox.firebaseapp.com/#/ |
 | JavaScript | CanvasKit | https://flutter-web-assembly-sandbox-js.firebaseapp.com/#/ |
 | JavaScript | HTML DOM | https://flutter-web-assembly-sandbox-html.firebaseapp.com/#/ |
 
