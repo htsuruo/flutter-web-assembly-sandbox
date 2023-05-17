@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../assets.dart';
-import '../styles.dart'; // Add this import
+import '../styles.dart';
+import 'title_screen_ui.dart'; // Add this import
 
 class TitleScreen extends StatelessWidget {
   const TitleScreen({super.key});
@@ -72,6 +73,12 @@ class TitleScreen extends StatelessWidget {
               color: emitColor,
               lightAmt: _finalEmitLightAmt,
             ), // to here.
+
+            /// UI
+            const Positioned.fill(
+              // Add from here...
+              child: TitleScreenUi(),
+            ),
           ],
         ),
       ),
