@@ -87,19 +87,28 @@ class _DifficultyBtns extends StatelessWidget {
           selected: difficulty == 0,
           onPressed: () => onDifficultyPressed(0),
           onHover: (over) => onDifficultyFocused(over ? 0 : null),
-        ),
+        ) // Add from here...
+            .animate()
+            .fadeIn(delay: 1.3.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)), // to here
         _DifficultyBtn(
           label: 'Normal',
           selected: difficulty == 1,
           onPressed: () => onDifficultyPressed(1),
           onHover: (over) => onDifficultyFocused(over ? 1 : null),
-        ),
+        ) // Add from here...
+            .animate()
+            .fadeIn(delay: 1.5.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)), // to here
         _DifficultyBtn(
           label: 'Hardcore',
           selected: difficulty == 2,
           onPressed: () => onDifficultyPressed(2),
           onHover: (over) => onDifficultyFocused(over ? 2 : null),
-        ),
+        ) // Add from here...
+            .animate()
+            .fadeIn(delay: 1.7.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)), // to here
         const Gap(20),
       ],
     );
