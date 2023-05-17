@@ -2,19 +2,40 @@ import 'package:flutter/material.dart';
 
 import '../assets.dart';
 import '../styles.dart';
-import 'title_screen_ui.dart'; // Add this import
+import 'title_screen_ui.dart';
 
-class TitleScreen extends StatelessWidget {
+class TitleScreen extends StatefulWidget {
   const TitleScreen({super.key});
 
-  final _finalReceiveLightAmt = 0.7; // Add this attribute
-  final _finalEmitLightAmt = 0.5; // And this attribute
+  @override
+  State<TitleScreen> createState() => _TitleScreenState();
+}
+
+class _TitleScreenState extends State<TitleScreen> {
+  Color get _emitColor =>
+      AppColors.emitColors[_difficultyOverride ?? _difficulty];
+  Color get _orbColor =>
+      AppColors.orbColors[_difficultyOverride ?? _difficulty];
+
+  /// Currently selected difficulty
+  int _difficulty = 0;
+
+  /// Currently focused difficulty (if any)
+  int? _difficultyOverride;
+
+  void _handleDifficultyPressed(int value) {
+    setState(() => _difficulty = value);
+  }
+
+  void _handleDifficultyFocused(int? value) {
+    setState(() => _difficultyOverride = value);
+  }
+
+  final _finalReceiveLightAmt = 0.7;
+  final _finalEmitLightAmt = 0.5;
 
   @override
   Widget build(BuildContext context) {
-    final orbColor = AppColors.orbColors[0]; // Add this final variable
-    final emitColor = AppColors.emitColors[0]; // And this one
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -25,59 +46,56 @@ class TitleScreen extends StatelessWidget {
 
             /// Bg-Receive
             _LitImage(
-              // Modify from here...
-              color: orbColor,
+              color: _orbColor,
               imgSrc: AssetPaths.titleBgReceive,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Base
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgBase,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Receive
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Mg-Emit
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleMgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
-            ), // to here.
+            ),
 
             /// Fg-Rocks
             Image.asset(AssetPaths.titleFgBase),
 
             /// Fg-Receive
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleFgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
-            ), // to here.
+            ),
 
             /// Fg-Emit
             _LitImage(
-              // Modify from here...
               imgSrc: AssetPaths.titleFgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
-            ), // to here.
+            ),
 
             /// UI
-            const Positioned.fill(
-              // Add from here...
-              child: TitleScreenUi(),
+            Positioned.fill(
+              child: TitleScreenUi(
+                difficulty: _difficulty,
+                onDifficultyFocused: _handleDifficultyFocused,
+                onDifficultyPressed: _handleDifficultyPressed,
+              ),
             ),
           ],
         ),
@@ -87,7 +105,6 @@ class TitleScreen extends StatelessWidget {
 }
 
 class _LitImage extends StatelessWidget {
-  // Add from here...
   const _LitImage({
     required this.color,
     required this.imgSrc,
@@ -108,4 +125,4 @@ class _LitImage extends StatelessWidget {
       child: Image.asset(imgSrc),
     );
   }
-}                                                         // to here.
+}
