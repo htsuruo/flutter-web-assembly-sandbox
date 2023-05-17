@@ -141,12 +141,19 @@ class _DifficultyBtn extends StatelessWidget {
             child: Stack(
               children: [
                 /// Bg with fill and outline
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF00D1FF).withOpacity(.1),
-                    border: Border.all(color: Colors.white, width: 5),
+                AnimatedOpacity(
+                  // Edit from here
+                  opacity: (!selected && (state.isHovered || state.isFocused))
+                      ? 1
+                      : 0,
+                  duration: .3.seconds,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF00D1FF).withOpacity(.1),
+                      border: Border.all(color: Colors.white, width: 5),
+                    ),
                   ),
-                ),
+                ), // to here.
 
                 if (state.isHovered || state.isFocused) ...[
                   Container(
