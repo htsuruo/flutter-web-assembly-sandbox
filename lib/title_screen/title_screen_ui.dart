@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 import '../assets.dart';
+import '../common/shader_effect.dart';
+import '../common/ticking_builder.dart';
 import '../common/ui_scaler.dart';
 import '../styles.dart';
 
@@ -191,7 +194,8 @@ class _TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    Widget content = Column(
+      // Modify this line
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -213,6 +217,30 @@ class _TitleText extends StatelessWidget {
             .fadeIn(delay: 1.seconds, duration: .7.seconds),
       ],
     );
+    return Consumer<FragmentPrograms?>(
+      builder: (context, fragmentPrograms, _) {
+        if (fragmentPrograms == null) return content;
+        return TickingBuilder(
+          builder: (context, time) {
+            return AnimatedSampler(
+              (image, size, canvas) {
+                const double overdrawPx = 30;
+                final shader = fragmentPrograms.ui.fragmentShader();
+                shader
+                  ..setFloat(0, size.width)
+                  ..setFloat(1, size.height)
+                  ..setFloat(2, time)
+                  ..setImageSampler(0, image);
+                Rect rect = Rect.fromLTWH(-overdrawPx, -overdrawPx,
+                    size.width + overdrawPx, size.height + overdrawPx);
+                canvas.drawRect(rect, Paint()..shader = shader);
+              },
+              child: content,
+            );
+          },
+        );
+      },
+    ); // to here.
   }
 }
 

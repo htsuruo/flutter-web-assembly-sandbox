@@ -1,14 +1,12 @@
-// Copyright 2023 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
 
+import 'assets.dart';
 import 'title_screen/title_screen.dart';
 
 void main() {
@@ -17,7 +15,14 @@ void main() {
     setWindowMinSize(const Size(800, 500));
   }
   Animate.restartOnHotReload = true;
-  runApp(const NextGenApp());
+  runApp(
+    // Edit from here...
+    FutureProvider<FragmentPrograms?>(
+      create: (context) => loadFragmentPrograms(),
+      initialData: null,
+      child: const NextGenApp(),
+    ),
+  ); // to here.
 }
 
 class NextGenApp extends StatelessWidget {
@@ -28,7 +33,7 @@ class NextGenApp extends StatelessWidget {
     return MaterialApp(
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(brightness: Brightness.dark),
-      home: const TitleScreen(), // Replace with this widget
+      home: const TitleScreen(),
     );
   }
 }
