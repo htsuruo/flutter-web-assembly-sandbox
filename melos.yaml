@@ -7,14 +7,15 @@ sdkPath: '.fvm/flutter_sdk'
 
 scripts:
   hosting:wasm:
+    #  masterチャンネルでrecordsがあるとビルドエラーになるため`--enable-experiment=records`指定
     run: |
-      flutter build web --wasm
+      flutter build web --wasm --enable-experiment=records
       cd ./firebase
       firebase deploy --only hosting:wasm
 
   hosting:js:
     run: |
-      flutter build web --web-renderer canvaskit
+      flutter build web --web-renderer canvaskit --enable-experiment=records
       cd ./firebase
       firebase deploy --only hosting:js
 
