@@ -16,12 +16,16 @@ A new Flutter project.
 ## How to build and deploy
 
 ```sh
+
+# All build options
+dart run melos run hosting:all
+
 # Wasm
-melos run hosting:wasm
+dart run melos run hosting:wasm
 
 # CanvasKit renderer
-melos run hosting:js
+dart run melos run hosting:js
 
 # html renderer
-melos run hosting:html
+dart run melos run hosting:html
 ```
