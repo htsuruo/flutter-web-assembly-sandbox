@@ -8,18 +8,18 @@ sdkPath: '.fvm/flutter_sdk'
 scripts:
   hosting:wasm:
     run: |
-      flutter build web --wasm
+      flutter build web --wasm --dart-define-from-file=dart_defines/wasm.json
       cd ./firebase
       firebase deploy --only hosting:wasm
 
   hosting:js:
     run: |
-      flutter build web --web-renderer canvaskit
+      flutter build web --web-renderer canvaskit --dart-define-from-file=dart_defines/canvaskit.json
       cd ./firebase
       firebase deploy --only hosting:js
 
   hosting:html:
     run: |
-      flutter build web --web-renderer html
+      flutter build web --web-renderer html --dart-define-from-file=dart_defines/html.json
       cd ./firebase
       firebase deploy --only hosting:html
