@@ -254,9 +254,14 @@ class _StartBtnState extends State<_StartBtn> {
                 ),
               ),
             ],
-          ),
-        );
-      },
+          ) // Edit from here...
+              .animate(autoPlay: false, onInit: (c) => _btnAnim = c)
+              .shimmer(duration: .7.seconds, color: Colors.black),
+        )
+            .animate()
+            .fadeIn(delay: 2.3.seconds)
+            .slide(begin: const Offset(0, .2));
+      }, // to here.
     );
   }
 }
