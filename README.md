@@ -8,12 +8,12 @@ This repository is a demo hosted with various build options, focusing on Flutter
 | `--web-renderer canvaskit` | https://flutter-web-assembly-sandbox-js.firebaseapp.com/#/ |
 | `--web-renderer html` | https://flutter-web-assembly-sandbox-html.firebaseapp.com/#/ |
 
-## requirement
+## Requirements
 
 - [fvm | Flutter Version Management](https://fvm.app/)(global)
 - Firebase project
 
-## How to build and deploy
+## Build and deploy
 
 ```sh
 
