@@ -1,3 +1,3 @@
 {
-  "buildOption": "--web-renderer=html"
+  "buildOption": "--web-renderer html"
 }

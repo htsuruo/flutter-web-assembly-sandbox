@@ -1,4 +1,3 @@
 {
-  "compiled": "JavaScript",
-  "renderer": "CanvasKit"
+  "buildOption": "--web-renderer canvaskit"
 }

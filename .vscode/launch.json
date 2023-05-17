@@ -8,7 +8,7 @@
       "name": "flutter-web-assembly-sandbox",
       "request": "launch",
       "type": "dart",
-      "args": ["--dart-define-from-file=./dart_define/canvaskit.json"]
+      "args": ["--dart-define-from-file=./dart_defines/canvaskit.json"]
     }
   ]
 }

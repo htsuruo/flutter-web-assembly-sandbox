@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  final (:compiled, :renderer) = (
-    compiled: const String.fromEnvironment('compiled'),
-    renderer: const String.fromEnvironment('renderer')
+  const buildOption = String.fromEnvironment('buildOption');
+  runApp(
+    const MyApp(
+      buildOptionLabel: buildOption,
+    ),
   );
-  runApp(MyApp(
-    buildOption: '$compiled, $renderer renderer',
-  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.buildOption});
+  const MyApp({super.key, required this.buildOptionLabel});
 
-  final String buildOption;
+  final String buildOptionLabel;
 
   // This widget is the root of your application.
   @override
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page（$buildOption）'),
+      home: MyHomePage(title: 'Flutter Demo Home Page（$buildOptionLabel）'),
     );
   }
 }
