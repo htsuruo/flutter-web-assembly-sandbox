@@ -5,18 +5,18 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0-266.0.dev <4.0.0'
+  sdk: ^3.4.0
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  cupertino_icons:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  melos: ^3.0.1
+  flutter_lints:
+  melos:
 
 flutter:
   uses-material-design: true
