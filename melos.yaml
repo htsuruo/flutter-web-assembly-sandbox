@@ -11,9 +11,10 @@ scripts:
     dart run melos run hosting:js
     dart run melos run hosting:html
 
+  # Font asset "MaterialIcons-Regular.otf" was tree-shakenの問題回避
   hosting:wasm:
     run: |
-      flutter build web --wasm --dart-define-from-file=dart_defines/wasm.json
+      flutter build web --wasm --dart-define-from-file=dart_defines/wasm.json --no-tree-shake-icons
       cd ./firebase
       firebase deploy --only hosting:wasm
 
