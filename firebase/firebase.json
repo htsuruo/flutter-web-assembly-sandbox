@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "wasm",
-      "public": "build/web_wasm",
+      "public": "build/web",
       "headers": [
         {
           "source": "**/*",
