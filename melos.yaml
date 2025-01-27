@@ -20,12 +20,12 @@ scripts:
 
   hosting:js:
     run: |
-      flutter build web --web-renderer canvaskit --dart-define-from-file=dart_defines/canvaskit.json
+      flutter build web --web-renderer canvaskit --dart-define-from-file=dart_defines/canvaskit.json --no-tree-shake-icons
       cd ./firebase
       firebase deploy --only hosting:js
 
   hosting:html:
     run: |
-      flutter build web --web-renderer html --dart-define-from-file=dart_defines/html.json
+      flutter build web --web-renderer html --dart-define-from-file=dart_defines/html.json --no-tree-shake-icons
       cd ./firebase
       firebase deploy --only hosting:html
