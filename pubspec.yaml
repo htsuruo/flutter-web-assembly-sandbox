@@ -16,7 +16,34 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints:
-  melos:
+  melos: ^7.0.0-dev.5
 
 flutter:
   uses-material-design: true
+
+melos:
+  sdkPath: '.fvm/flutter_sdk'
+  scripts:
+    hosting:all: |
+      dart run melos run hosting:wasm
+      dart run melos run hosting:js
+      dart run melos run hosting:html
+
+    # Font asset "MaterialIcons-Regular.otf" was tree-shakenの問題回避
+    hosting:wasm:
+      run: |
+        flutter build web --wasm --dart-define-from-file=dart_defines/wasm.json --no-tree-shake-icons
+        cd ./firebase
+        firebase deploy --only hosting:wasm
+
+    hosting:js:
+      run: |
+        flutter build web --web-renderer canvaskit --dart-define-from-file=dart_defines/canvaskit.json --no-tree-shake-icons
+        cd ./firebase
+        firebase deploy --only hosting:js
+
+    hosting:html:
+      run: |
+        flutter build web --web-renderer html --dart-define-from-file=dart_defines/html.json --no-tree-shake-icons
+        cd ./firebase
+        firebase deploy --only hosting:html
